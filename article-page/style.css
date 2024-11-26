@@ -60,7 +60,7 @@ body {
   grid-template-areas: "header header" "nav nav" "main aside" "footer footer";
   max-width: 68em;
   padding: 0;
-  min-height: 100vh;
+  height: 100%;
 }
 
 header {
@@ -195,4 +195,10 @@ aside {
 footer {
   grid-area: footer;
   background-color: #fafafa;
+}
+
+@media only screen and (max-width: 880px) {
+  #page {
+    grid-template-areas: "header header" "nav nav" "main main" "aside aside" "footer footer";
+  }
 }/*# sourceMappingURL=style.css.map */
