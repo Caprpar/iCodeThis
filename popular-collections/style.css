@@ -85,14 +85,19 @@ header ul li {
   gap: 0.6em;
   grid-template-columns: auto auto auto;
   grid-template-rows: auto auto auto;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto 60px;
 }
 .img-container img {
   border-radius: 0.8em;
-  height: auto;
+  height: 100%;
   width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
 }
 .img-container img:first-child {
   grid-column: 1/4;
+  height: 165px;
 }
 
 .collection-info {
