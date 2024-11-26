@@ -1,12 +1,15 @@
 // Recieve data from
 const url = "data.json";
 
+/* fetch data and build elements in document */
 fetch(url)
   .then((response) => response.json())
   .then((data) => {
+    // Remove placeholder divs when fetch suceeds
     removeElementByClassName("placeholder-card");
-    let categories = data.collections;
-    for (let item of categories) {
+    setTitle(data.filter);
+    buildTags(data.tags);
+    for (let item of data.collections) {
       buildCard(item.urls, item.category);
     }
   });
@@ -26,10 +29,31 @@ fetch(urls[1])
  */
 
 function removeElementByClassName(className) {
-  let elements = document.querySelectorAll(".placeholder-card");
+  let elements = document.querySelectorAll(".placeholder");
   for (let element of elements) {
     element.style.display = "none";
   }
+}
+
+function setTitle(titleName) {
+  const headerEl = document.querySelector("h1");
+  headerEl.innerText = titleName;
+}
+
+function buildTags(tags) {
+  // [] fetch tags
+  const tagEl = document.querySelector("#tags");
+  for (let tagname of tags) {
+    const listEl = document.createElement("li");
+    listEl.innerText = tagname;
+    tagEl.appendChild(listEl);
+  }
+
+  // [] for each tag
+  // [] append to header > ul
+  // []
+  // []
+  // []
 }
 
 function buildCard(images, category) {
@@ -61,12 +85,12 @@ function buildCard(images, category) {
 
   const categoryEl = document.createElement("p");
   categoryEl.classList = "category";
-  categoryEl.innerText = category;
+  categoryEl.innerText = `category`;
   const galleryIcon = document.createElement("img");
   galleryIcon.src = "icons/gallery-icon.svg";
   const countEl = document.createElement("p");
   countEl.classList = "count";
-  countEl.innerText = images.length;
+  countEl.innerText = `+${images.length}`;
 
   collectionInfoEl.appendChild(categoryEl);
   collectionInfoEl.appendChild(galleryIcon);
@@ -75,5 +99,3 @@ function buildCard(images, category) {
   cardEl.appendChild(collectionInfoEl);
   cardContainer.appendChild(cardEl);
 }
-
-function listTags() {}
