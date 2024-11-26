@@ -6,7 +6,7 @@ fetch(url)
   .then((response) => response.json())
   .then((data) => {
     // Remove placeholder divs when fetch suceeds
-    removeElementByClassName("placeholder-card");
+    removeElementByClassName("placeholder");
     setTitle(data.filter);
     buildTags(data.tags);
     for (let item of data.collections) {
