@@ -85,7 +85,7 @@ function buildCard(images, category) {
 
   const categoryEl = document.createElement("p");
   categoryEl.classList = "category";
-  categoryEl.innerText = `category`;
+  categoryEl.innerText = category;
   const galleryIcon = document.createElement("img");
   galleryIcon.src = "icons/gallery-icon.svg";
   const countEl = document.createElement("p");
